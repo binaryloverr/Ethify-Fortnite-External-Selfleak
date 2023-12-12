@@ -20,12 +20,7 @@ inline 	int u_tb_time_since;
 int HeldWeaponType;
 
 HWND window;
-
-inline int u_enemyID = 0;
-
-inline int u_visennemy = 0;
-
-inline int u_InFovEnemy = 0;
+;
 
 enum EFortWeaponType : int
 {
@@ -34,16 +29,6 @@ enum EFortWeaponType : int
 	Smg = 2,
 	Sniper = 3
 };
-
-bool radar = false;
-bool rect_radar = false;
-float radar_position_x{ 84.494f };
-float radar_position_y{ 77.841f };
-float RadarDistance = { 300.f };
-
-
-
-
 
 uintptr_t RootComponent ( uintptr_t actor )
 {
@@ -54,14 +39,6 @@ fvector GetLocation ( uintptr_t actor )
 {
 	SPOOF_FUNC;
 	return driver_rq->read <fvector> ( RootComponent ( actor ) + offset::relative_location );
-}
-
-fvector target_prediction(fvector TargetPosition, fvector ComponentVelocity, float player_distance, float ProjectileSpeed = 9.5)
-{
-	float gravity = abs(670); // Gravity (Probably other ways to get this but I set it as a constant value)
-	float time = player_distance / abs(ProjectileSpeed);
-	float bulletDrop = (gravity / 300) * time * time;
-	return fvector(TargetPosition.x += time * (ComponentVelocity.x), TargetPosition.y += time * (ComponentVelocity.y), TargetPosition.z += time * (ComponentVelocity.z));
 }
 
 char* wchar_to_char(const wchar_t* pwchar)
@@ -94,41 +71,6 @@ char* wchar_to_char(const wchar_t* pwchar)
 
 	return filePathC;
 }
-
-void RadarRange(float* x, float* y, float range)
-{
-	if (fabs((*x)) > range || fabs((*y)) > range)
-	{
-		if ((*y) > (*x))
-		{
-			if ((*y) > -(*x))
-			{
-				(*x) = range * (*x) / (*y);
-				(*y) = range;
-			}
-			else
-			{
-				(*y) = -range * (*y) / (*x);
-				(*x) = -range;
-			}
-		}
-		else
-		{
-			if ((*y) > -(*x))
-			{
-				(*y) = range * (*y) / (*x);
-				(*x) = range;
-			}
-			else
-			{
-				(*x) = -range * (*x) / (*y);
-				(*y) = -range;
-			}
-		}
-	}
-}
-
-int Length;
 
 namespace u_loop {
 	class u_fn	 {
@@ -547,7 +489,7 @@ namespace u_loop {
 
 					if ( ud::u_visible_check ) {
 						if ( is_visible ( cached.skeletal_mesh ) ) {
-							if ( dist < ud::u_aimfov && dist < target_dist ) {
+							if ( dist < ud::u_aimfov && dist * 10 < target_dist ) {
 							
 								target_dist = dist;
 								target_entity = cached.entity;
@@ -555,7 +497,7 @@ namespace u_loop {
 						}
 					}
 					else {
-						if ( dist < ud::u_aimfov && dist < target_dist ) {
+						if ( dist < ud::u_aimfov && dist * 10 < target_dist ) {
 				
 							target_dist = dist;
 							target_entity = cached.entity;
@@ -783,7 +725,7 @@ namespace u_loop {
 						{
 							auto team_number = driver_rq->read<char>(cached.player_state + offset::team_index);
 
-							DWORD_PTR test_platform = driver_rq->read<DWORD_PTR>(ud_cache->player_state + 0x438); // 0x440 next update
+							DWORD_PTR test_platform = driver_rq->read<DWORD_PTR>(ud_cache->player_state + 0x438); 
 							wchar_t platform[64];
 							driver_rq->read1((uint64_t)test_platform, reinterpret_cast<PVOID>(platform), sizeof(platform));
 							std::wstring balls_sus(platform);
@@ -894,30 +836,7 @@ namespace u_loop {
 
 						DrawString(16, root.x - (text_size.x / 2), root.y + 5, visibleColor, false, true, distance_str.c_str());
 					}
-
-					if (ud::u_triggerbot) {
-						if (distance < ud::u_maximum_distance) {
-
-							auto targeted_fort_pawn = driver_rq->read<std::uintptr_t>(ud_cache->player_controller + 0x1870); // AFortPlayerController	TargetedFortPawn	AFortPawn*
-							auto target_state = driver_rq->read<std::uintptr_t>(targeted_fort_pawn + offset::player_state);
-							/*std::cout << ("TargetedPawn -> ") << targeted_fort_pawn << std::endl;*/
-							auto target_team = driver_rq->read<int>(target_state + offset::team_index);
-							if ((ud_cache->acknowledged_pawn) and (targeted_fort_pawn != 0) and (target_team != ud_cache->team_index)) {
-								if (u_has_clicked) {
-									u_tb_begin = std::chrono::steady_clock::now();
-									u_has_clicked = 0;
-								}
-								u_tb_end = std::chrono::steady_clock::now();
-								u_tb_time_since = std::chrono::duration_cast<std::chrono::milliseconds>(u_tb_end - u_tb_begin).count();
-								if (u_tb_time_since >= ud::u_custom_delay) {
-									move_mouse;
-									u_has_clicked = 1;
-								}
-							}
-						}
-					}
-
-					
+				
 
 					if (ud::u_skeleton && ud::u_enable_esp) {
 
