@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Functions">
+      <UniqueIdentifier>{d9fc5620-6597-400f-a3ff-2dd8c34e290b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Functions\SDK">
+      <UniqueIdentifier>{1e5443dc-d09d-4ff3-aca1-d05835bb58fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Prot">
+      <UniqueIdentifier>{cb579987-79b4-4ffb-92a6-20697dfe9fc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loops">
+      <UniqueIdentifier>{e9bc1b57-4c32-421c-a7cb-96bd23f18022}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Driver">
+      <UniqueIdentifier>{48ae4b1c-e4b6-4f97-9d0d-86b0c66e916e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Includes">
+      <UniqueIdentifier>{2de361b9-d76d-41d7-be65-a2a4f9bfb3f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Includes\ImGui">
+      <UniqueIdentifier>{8bc85a01-662c-4e2c-89bb-47bfb0844b49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render">
+      <UniqueIdentifier>{8e82bb04-a612-4864-828d-0b727d3fdd68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fonts">
+      <UniqueIdentifier>{7c943513-64a6-47a0-b621-b6f412dcba02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Images">
+      <UniqueIdentifier>{f559c5ab-c291-4143-a47f-89852014d48f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gdrv">
+      <UniqueIdentifier>{bd01a7e5-5c7c-464e-86f5-9f210b776c19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gdrv\binary">
+      <UniqueIdentifier>{3c381dbe-1a73-4f40-9456-ef24a3b678e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gdrv\exploit">
+      <UniqueIdentifier>{995557a1-732c-4b80-be8e-791fbefe8dbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gdrv\hde">
+      <UniqueIdentifier>{2ee562ca-624b-4f3e-8fe0-a1b13956de21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gdrv\utils">
+      <UniqueIdentifier>{319aebd0-15b8-4017-b2e4-f01630febd95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protection">
+      <UniqueIdentifier>{be7d4c9c-78b5-436c-ab5a-57c2b98cc976}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_dx11.cpp">
+      <Filter>Includes\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_win32.cpp">
+      <Filter>Includes\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_tables.cpp">
+      <Filter>Includes\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
+      <Filter>Includes\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>Includes\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>Includes\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="grdv\exploit\pe.cpp">
+      <Filter>gdrv\exploit</Filter>
+    </ClCompile>
+    <ClCompile Include="grdv\exploit\swind2.cpp">
+      <Filter>gdrv\exploit</Filter>
+    </ClCompile>
+    <ClCompile Include="grdv\hde\hde64.c">
+      <Filter>gdrv\hde</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sdk.h">
+      <Filter>Functions\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="spoofer.h">
+      <Filter>Prot</Filter>
+    </ClInclude>
+    <ClInclude Include="SkCrypt.h">
+      <Filter>Prot</Filter>
+    </ClInclude>
+    <ClInclude Include="xorst.h">
+      <Filter>Prot</Filter>
+    </ClInclude>
+    <ClInclude Include="driver.hpp">
+      <Filter>Driver</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>Functions\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="defs.h">
+      <Filter>Functions\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="offsets.h">
+      <Filter>Functions\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="imports.h">
+      <Filter>Prot</Filter>
+    </ClInclude>
+    <ClInclude Include="includes.h">
+      <Filter>Functions\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="render.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="dxgi.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="ue.h">
+      <Filter>Loops</Filter>
+    </ClInclude>
+    <ClInclude Include="loop.h">
+      <Filter>Loops</Filter>
+    </ClInclude>
+    <ClInclude Include="icons.h">
+      <Filter>Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="icon.h">
+      <Filter>Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="fonts.h">
+      <Filter>Fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="image.h">
+      <Filter>Images</Filter>
+    </ClInclude>
+    <ClInclude Include="keybind.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="protect\anti_vm.h">
+      <Filter>Prot</Filter>
+    </ClInclude>
+    <ClInclude Include="protect\antiDbg.h">
+      <Filter>Prot</Filter>
+    </ClInclude>
+    <ClInclude Include="protect\auth.hpp">
+      <Filter>Prot</Filter>
+    </ClInclude>
+    <ClInclude Include="protect\lazy.h">
+      <Filter>Prot</Filter>
+    </ClInclude>
+    <ClInclude Include="protect\obfuscator.hpp">
+      <Filter>Prot</Filter>
+    </ClInclude>
+    <ClInclude Include="protect\process.h">
+      <Filter>Prot</Filter>
+    </ClInclude>
+    <ClInclude Include="protect\xorstr.h">
+      <Filter>Prot</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="fname.h">
+      <Filter>Functions\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_dx11.h">
+      <Filter>Includes\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_win32.h">
+      <Filter>Includes\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>Includes\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_rectpack.h">
+      <Filter>Includes\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_textedit.h">
+      <Filter>Includes\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_truetype.h">
+      <Filter>Includes\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>Includes\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>Includes\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="grdv\binary\bytes.h">
+      <Filter>gdrv\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="grdv\binary\dropper.h">
+      <Filter>gdrv\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="grdv\hde\hde64.h">
+      <Filter>gdrv\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="grdv\hde\table64.h">
+      <Filter>gdrv\hde</Filter>
+    </ClInclude>
+    <ClInclude Include="grdv\utils\ntdll.h">
+      <Filter>gdrv\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="grdv\global.h">
+      <Filter>gdrv</Filter>
+    </ClInclude>
+    <ClInclude Include="grdv\resource.h">
+      <Filter>gdrv</Filter>
+    </ClInclude>
+    <ClInclude Include="protection\anti_debugger.h">
+      <Filter>protection</Filter>
+    </ClInclude>
+    <ClInclude Include="protection\protector.h">
+      <Filter>protection</Filter>
+    </ClInclude>
+    <ClInclude Include="protection\undump.h">
+      <Filter>protection</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="ImGui\d3d11.lib">
+      <Filter>Includes\ImGui</Filter>
+    </Library>
+    <Library Include="libcurl.lib" />
+    <Library Include="library_x64.lib" />
+  </ItemGroup>
+</Project>
