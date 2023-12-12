@@ -414,21 +414,6 @@ BOOL __stdcall ClientToScreen_Spoofed(HWND hWnd, LPPOINT lpRect) {
 	return _ClientToScreen(hWnd, lpRect);
 }
 
-
-inline const BYTE XOR_KEY = 0xACACACADDEDFFFA;
-
-inline void EncryptFunctionBytes(BYTE* bytes, size_t size) {
-	for (size_t i = 0; i < size; ++i) {
-		bytes[i] ^= XOR_KEY;
-	}
-}
-
-inline void DecryptFunctionBytes(BYTE* bytes, size_t size) {
-	for (size_t i = 0; i < size; ++i) {
-		bytes[i] ^= XOR_KEY;
-	}
-}
-
 inline void move_mouse(fvector2d Head2D) {
 	SPOOF_FUNC;
 	float x = Head2D.x; float y = Head2D.y;
