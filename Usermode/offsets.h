@@ -57,7 +57,7 @@ enum bones : int
 };
 
 enum offset {
-	uworld = 0x117392A8, //Uworld // Gworld
+	uworld = 0x11781328, //Uworld // Gworld
 	game_instance = 0x1D0, //owning game instance
 	game_state = 0x158, //game state
 	local_player = 0x38, //
