@@ -92,7 +92,7 @@ namespace u_loop {
 
 			char16_t* pNameBuffer;
 
-				uintptr_t pNameStructure = driver_rq->read <uintptr_t> ( player_state + 0xAE8 ); //pNameStructure
+				uintptr_t pNameStructure = driver_rq->read <uintptr_t> ( player_state + 0xAF0 ); //pNameStructure
 				if ( is_valid ( pNameStructure ) ) {
 					pNameLength = driver_rq->read <int> ( pNameStructure + 0x10 );
 					if ( pNameLength <= 0)
@@ -205,25 +205,14 @@ namespace u_loop {
 
 		}
 
-		fvector get_bone_3d(uintptr_t skeletal_mesh, int index) const {
+		static auto get_bone_3d(uintptr_t skeletal_mesh, int bone_index) -> fvector {
 
-			SPOOF_FUNC
-
-			if ( debug_calls )
-			{
-				std::cout << E ( "Calling Get Bone" ) << std::endl;
-			}
-			if ( ! ( uintptr_t ) this) return {};
-
-			int is_cached = driver_rq->read <int> ( skeletal_mesh + 0x650); //bone cache
-			auto bone_transform = driver_rq->read <FTransform> (driver_rq->read <u> ( skeletal_mesh + 0x10 * is_cached + 0x608) + 0x60 * index ); //bone array
-
-			FTransform ComponentToWorld = driver_rq->read <FTransform> ( skeletal_mesh + 0x230 );
-
-			D3DMATRIX Matrix =  { };
-			Matrix = MatrixMultiplication( bone_transform.ToMatrixWithScale( ), ComponentToWorld.ToMatrixWithScale( ) );
-
-			return fvector( Matrix._41, Matrix._42, Matrix._43 );
+		uintptr_t bone_array = driver.read<uintptr_t>(skeletal_mesh + 0x608);
+		if (bone_array == NULL) bone_array = driver.read<uintptr_t>(skeletal_mesh + 0x608 + 0x10);
+		FTransform bone = driver.read<FTransform>(bone_array + (bone_index * 0x60));
+		FTransform component_to_world = driver.read<FTransform>(skeletal_mesh + 0x230);
+		D3DMATRIX matrix = MatrixMultiplication(bone.ToMatrixWithScale(), component_to_world.ToMatrixWithScale());
+		return fvector(matrix._41, matrix._42, matrix._43);
 		}
 
 		//no loot esp go kys
@@ -289,7 +278,7 @@ namespace u_loop {
 
 				if  ( ud::u_weapon_cfg )
 				{		
-					uint64_t player_weapon = driver_rq->read <uint64_t> ( ud_cache -> acknowledged_pawn + 0xA20); // 	struct AFortWeapon* CurrentWeapon;
+					uint64_t player_weapon = driver_rq->read <uint64_t> ( ud_cache -> acknowledged_pawn + 0xa20); // 	struct AFortWeapon* CurrentWeapon;
 
 					if ( is_valid ( player_weapon ) ) {
 					
