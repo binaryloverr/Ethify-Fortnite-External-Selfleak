@@ -57,7 +57,7 @@ enum bones : int
 };
 
 enum offset {
-	uworld = 0x11781328, //Uworld // Gworld
+	uworld = 0x112F14C8, //Uworld // Gworld
 	game_instance = 0x1D0, //owning game instance
 	game_state = 0x158, //game state
 	local_player = 0x38, //
@@ -69,7 +69,7 @@ enum offset {
 	velocity = 0x170,
 	relative_location = 0x120,
 	relative_rotation = 0x138,
-	team_index = 0x10e0,
+	team_index = 0x10f1,
 	player_array = 0x2A8,
 	pawn_private = 0x308,
 	component_to_world = 0x230,
