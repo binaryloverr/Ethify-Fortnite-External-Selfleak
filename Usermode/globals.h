@@ -15,6 +15,9 @@ namespace ud
 
 	inline inline bool u_debug = 0;
 
+	inline inline bool u_debugd = 0;
+
+
 	inline inline bool u_ignore_downed = 1;
 
 	inline inline bool u_ignore_bots = 0;
